@@ -1,10 +1,10 @@
 <?php
 
-namespace Sevendays\FilamentPageBuilder\Models;
+namespace SubashRijal5\FilamentPageBuilder\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Spatie\Translatable\HasTranslations;
+// use Spatie\Translatable\HasTranslations;
 
 /**
  * @property array|string $content
@@ -14,7 +14,7 @@ use Spatie\Translatable\HasTranslations;
  */
 class Block extends Model
 {
-    use HasTranslations;
+    // use HasTranslations;
 
     public $translatable = ['content'];
 

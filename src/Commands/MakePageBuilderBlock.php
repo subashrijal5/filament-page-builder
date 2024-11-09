@@ -1,6 +1,6 @@
 <?php
 
-namespace Sevendays\FilamentPageBuilder\Commands;
+namespace SubashRijal5\FilamentPageBuilder\Commands;
 
 use Closure;
 use Illuminate\Console\GeneratorCommand;
@@ -55,14 +55,14 @@ class MakePageBuilderBlock extends GeneratorCommand
 
         $name = str_replace('/', '\\', $name);
 
-        $rootNamespace = $this->rootNamespace().'\\Filament\\Blocks';
+        $rootNamespace = $this->rootNamespace() . '\\Filament\\Blocks';
 
         if (Str::startsWith($name, $rootNamespace)) {
             return Str::replace('\\\\', '\\', $name);
         }
 
         return $this->qualifyClass(
-            $this->getDefaultNamespace(trim($rootNamespace, '\\')).'\\'.$name
+            $this->getDefaultNamespace(trim($rootNamespace, '\\')) . '\\' . $name
         );
     }
 
@@ -72,7 +72,7 @@ class MakePageBuilderBlock extends GeneratorCommand
     protected function writeView(Closure $onSuccess = null): void
     {
         $path = $this->viewPath(
-            str_replace('.', '/', 'filament.blocks.'.$this->getView()).'.blade.php'
+            str_replace('.', '/', 'filament.blocks.' . $this->getView()) . '.blade.php'
         );
 
         if (! $this->files->isDirectory(dirname($path))) {
@@ -107,7 +107,7 @@ class MakePageBuilderBlock extends GeneratorCommand
     {
         return str_replace(
             ['DummyView', '{{ view }}'],
-            'view(\'filament.blocks.'.$this->getView().'\', $state)',
+            'view(\'filament.blocks.' . $this->getView() . '\', $state)',
             parent::buildClass($name)
         );
     }
@@ -140,7 +140,7 @@ class MakePageBuilderBlock extends GeneratorCommand
     protected function resolveStubPath(string $stub): string
     {
         return file_exists($customPath = $this->laravel->basePath(trim($stub, '/')))
-                        ? $customPath
-                        : __DIR__.$stub;
+            ? $customPath
+            : __DIR__ . $stub;
     }
 }

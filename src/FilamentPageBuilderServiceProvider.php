@@ -1,12 +1,12 @@
 <?php
 
-namespace Sevendays\FilamentPageBuilder;
+namespace SubashRijal5\FilamentPageBuilder;
 
 use Filament\Support\Assets\Css;
 use Filament\Support\Facades\FilamentAsset;
 use Illuminate\Filesystem\Filesystem;
-use Sevendays\FilamentPageBuilder\Commands\MakePageBuilderBlock;
-use Sevendays\FilamentPageBuilder\Models\Block;
+use SubashRijal5\FilamentPageBuilder\Commands\MakePageBuilderBlock;
+use SubashRijal5\FilamentPageBuilder\Models\Block;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -28,8 +28,8 @@ class FilamentPageBuilderServiceProvider extends PackageServiceProvider
     public function packageBooted(): void
     {
         FilamentAsset::register([
-            Css::make('plugin-filament-page-builder', __DIR__.'/../resources/dist/filament-page-builder.css'),
-        ], 'sevendays/filament-page-builder');
+            Css::make('plugin-filament-page-builder', __DIR__ . '/../resources/dist/filament-page-builder.css'),
+        ], 'subashrijal5/filament-page-builder');
 
         // support 'empty' form blocks
         Block::creating(function (Block $model) {

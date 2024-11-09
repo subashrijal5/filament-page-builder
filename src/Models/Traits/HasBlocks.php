@@ -1,9 +1,9 @@
 <?php
 
-namespace Sevendays\FilamentPageBuilder\Models\Traits;
+namespace SubashRijal5\FilamentPageBuilder\Models\Traits;
 
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Sevendays\FilamentPageBuilder\Models\Block;
+use SubashRijal5\FilamentPageBuilder\Models\Block;
 
 trait HasBlocks
 {

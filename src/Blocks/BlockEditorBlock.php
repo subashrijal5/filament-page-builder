@@ -1,6 +1,6 @@
 <?php
 
-namespace Sevendays\FilamentPageBuilder\Blocks;
+namespace SubashRijal5\FilamentPageBuilder\Blocks;
 
 use Filament\Forms\Components\Builder\Block;
 use Filament\Forms\Components\Field;

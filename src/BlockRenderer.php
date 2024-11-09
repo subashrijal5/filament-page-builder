@@ -1,22 +1,20 @@
 <?php
 
-namespace Sevendays\FilamentPageBuilder;
+namespace SubashRijal5\FilamentPageBuilder;
 
 use Filament\Facades\Filament;
 use Illuminate\Contracts\View\View;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
-use Sevendays\FilamentPageBuilder\Blocks\BlockEditorBlock;
-use Sevendays\FilamentPageBuilder\Models\Block;
+use SubashRijal5\FilamentPageBuilder\Blocks\BlockEditorBlock;
+use SubashRijal5\FilamentPageBuilder\Models\Block;
 use SplFileInfo;
 
 class BlockRenderer
 {
     private ?array $cache = null;
 
-    public function __construct(protected Filesystem $filesystem)
-    {
-    }
+    public function __construct(protected Filesystem $filesystem) {}
 
     /**
      * @return class-string<BlockEditorBlock>[]
@@ -38,7 +36,7 @@ class BlockRenderer
         $classes = collect($this->filesystem->allFiles($blocksDirectory))
             ->map(function (SplFileInfo $file) use ($namespace) {
                 $variableNamespace = $namespace->contains('*') ? str_ireplace(
-                    ['\\'.$namespace->before('*'), $namespace->after('*')],
+                    ['\\' . $namespace->before('*'), $namespace->after('*')],
                     ['', ''],
                     Str::of($file->getPath())
                         ->after(base_path())

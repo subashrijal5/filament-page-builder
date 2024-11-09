@@ -1,6 +1,6 @@
 <?php
 
-namespace Sevendays\FilamentPageBuilder\Forms\Components;
+namespace SubashRijal5\FilamentPageBuilder\Forms\Components;
 
 use Closure;
 use ErrorException;
@@ -14,8 +14,8 @@ use Illuminate\Database\Eloquent\Relations\HasOneOrMany;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Livewire\Component;
-use Sevendays\FilamentPageBuilder\Blocks\BlockEditorBlock;
-use Sevendays\FilamentPageBuilder\Models\Block;
+use SubashRijal5\FilamentPageBuilder\Blocks\BlockEditorBlock;
+use SubashRijal5\FilamentPageBuilder\Models\Block;
 
 class BlockEditor extends Builder
 {
@@ -79,9 +79,9 @@ class BlockEditor extends Builder
         $records = $relationship ? $this->getCachedExistingRecords() : null;
 
         $container = collect($this->getState())
-            ->filter(fn (array $itemData): bool => $this->hasBlock($itemData['type']))
+            ->filter(fn(array $itemData): bool => $this->hasBlock($itemData['type']))
             ->map(
-                fn (array $itemData, $itemIndex): ComponentContainer => $this
+                fn(array $itemData, $itemIndex): ComponentContainer => $this
                     ->getBlock($itemData['type'])
                     ->getChildComponentContainer()
                     ->model($relationship ? $records[$itemIndex] ?? $this->getRelatedModel() : null)
@@ -131,7 +131,7 @@ class BlockEditor extends Builder
                 //->whereIn($relationship->getRelated()->getQualifiedKeyName(), $recordsToDelete)
                 ->whereKey($recordsToDelete)
                 ->get()
-                ->each(static fn (Model $record) => $record->delete());
+                ->each(static fn(Model $record) => $record->delete());
 
             $childComponentContainers = $component->getChildComponentContainers();
 
@@ -195,7 +195,6 @@ class BlockEditor extends Builder
                     foreach (Arr::only($itemData, $record->getTranslatableAttributes()) as $key => $value) {
                         $record->setTranslation($key, $activeLocale, $value);
                     }
-
                 } else {
                     $record->fill($itemData);
                 }
@@ -249,7 +248,7 @@ class BlockEditor extends Builder
         $relatedKeyName = $relationship->getRelated()->getKeyName();
 
         return $this->cachedExistingRecords = $relationshipQuery->get()->mapWithKeys(
-            fn (Model $item): array => ["record-{$item[$relatedKeyName]}" => $item],
+            fn(Model $item): array => ["record-{$item[$relatedKeyName]}" => $item],
         );
     }
 
@@ -401,7 +400,7 @@ class BlockEditor extends Builder
                 $view,
                 ['preview' => $container->getParentComponent()->renderDisplay($state)]            /* @phpstan-ignore-line */
             );
-        } catch (ErrorException|\Exception $e) {
+        } catch (ErrorException | \Exception $e) {
             return __('Error when rendering: :phError', ['phError' => $e->getMessage()]);
         }
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Sevendays\FilamentPageBuilder\Facades;
+namespace SubashRijal5\FilamentPageBuilder\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
