@@ -127,7 +127,7 @@ class BlockEditor extends Builder
             }
 
             $relationship
-                //todo check if we can use same way as in Repeater
+                //TODO:: check if we can use same way as in Repeater
                 //->whereIn($relationship->getRelated()->getQualifiedKeyName(), $recordsToDelete)
                 ->whereKey($recordsToDelete)
                 ->get()
